@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 2016-04-16 Sat 19:04 -->
+<meta  charset="utf-8">
+<meta  name="viewport" content="width=device-width, initial-scale=1">
+<title>TP 1: manejo de archivos y cadenas</title>
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="Dato Simó">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org.css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">TP 1: manejo de archivos y cadenas</h1>
+<p>
+Este trabajo práctico consiste en tres partes separadas, que se entregarán en
+la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a> en un único archivo ZIP.
+</p>
+
+<p>
+Como de costumbre, el asunto del mail debe contener el nombre del TP (<b>TP1</b>) y el
+número de padrón del alumno.
+</p>
+
+<p>
+La entrega incluye, obligatoriamente, los siguientes archivos:
+</p>
+
+<ul class="org-ul">
+<li><i>tac.c</i></li>
+
+<li><i>tail.c</i></li>
+
+<li><i>strutil.c</i></li>
+
+<li><i>pila.c, cola.h</i> y <i>lista.c</i> (las implementaciones del alumno de estos TDA)</li>
+</ul>
+
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">El programa <i>tac</i></a></li>
+<li><a href="#orgheadline2">El programa <i>tail</i></a></li>
+<li><a href="#orgheadline3">Uso de cadenas <i>(strutil.c)</i></a></li>
+<li><a href="#orgheadline4">Makefile</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">El programa <i>tac</i></h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tac-invocation.html">tac</a> de Unix.
+</p>
+
+<p>
+<i>tac</i> acepta un nombre de archivo como único argumento, e imprime por salida
+estándar las líneas del archivo en orden inverso.
+</p>
+
+<p>
+Por ejemplo, si tenemos un archivo llamado <i>nombres.txt</i> con los nombres
+“Alicia”, “Bruno”, “Carolina” y “Daniel”, uno por línea en ese orden, <i>tac</i>
+imprime:
+</p>
+
+<pre class="example">
+$ ./tac nombres.txt
+Daniel
+Carolina
+Bruno
+Alicia
+</pre>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Observaciones</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<ol class="org-ol">
+<li>Se puede asumir que el tamaño del archivo es menor que la cantidad de
+memoria disponible. Por tanto, se permite almacenar todo el archivo en
+memoria si fuere necesario (complejidad espacial lineal).</li>
+
+<li>Para la lectura del archivo, se recomienda usar la función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a>.</li>
+
+<li><p>
+En caso de no existir el archivo pasado como parámetro, el programa termina
+con código de salida 1, imprimiendo antes por salida de error estándar:
+</p>
+
+<pre class="example">
+$ ./tac no_existe.txt
+No se pudo abrir el archivo
+</pre></li>
+
+<li><p>
+En caso de no recibir ningún argumento, o recibir más de uno, el programa
+también termina con código de salida 1, e imprime (también en stderr):
+</p>
+
+<pre class="example">
+$ ./tac
+Uso: ./tac &lt;ARCHIVO&gt;
+
+$ ./tac uno.txt dos.txt
+Uso: ./tac &lt;ARCHIVO&gt;
+</pre></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">El programa <i>tail</i></h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html">tail</a> de Unix. <i>tail</i>
+permite imprimir las últimas <i>N</i> lineas de un archivo, o de la entrada estándar.
+</p>
+
+<p>
+En nuestro caso, el programa no acepta nombre de archivo y siempre trabaja con
+la entrada estándar. Nuestra implementación acepta un número entero <i>N</i> como
+único argumento. Ejemplo (usando el mismo archivos <i>nombres.txt</i>):
+</p>
+
+<pre class="example">
+$ cat nombres.txt | ./tail 2
+Carolina
+Daniel
+
+$ cat nombres.txt | ./tail 1
+Daniel
+
+$ cat nombres.txt | ./tail 4
+Alicia
+Bruno
+Carolina
+Daniel
+
+$ cat nombres.txt | ./tail 100
+Alicia
+Bruno
+Carolina
+Daniel
+</pre>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Observaciones</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<ol class="org-ol">
+<li><p>
+No se permite almacenar todo el archivo en memoria. Se puede almacenar, como
+máximo, <i>N</i> líneas. Tampoco se permite el uso de archivos temporales.
+</p>
+
+<p>
+(Cabe notar que, como se trabaja con entrada estándar, esta no puede ser
+leída dos veces para averiguar el número de líneas.)
+</p></li>
+
+<li>La función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a> puede usarse para leer entrada estándar también, usando
+la constante <code>stdin</code> como fuente.</li>
+
+<li><p>
+En caso de recibir como argumento un número <i>menor</i> que 0, el programa termina
+con código de salida 1, imprimiendo antes por salida de error estándar:
+</p>
+
+<pre class="example">
+$ ./tail -10
+El número de líneas no puede ser negativo.
+</pre></li>
+
+<li>El caso de número de argumentos incorrectos se maneja igual que para <i>tac</i>.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Uso de cadenas <i>(strutil.c)</i></h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+Se pide implementar las funciones del archivo <a href="strutil.h">strutil.h</a> que se describen a
+continuación.
+</p>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">substr()</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
+<span style="color: #586e75;"> * Devuelve una nueva cadena, allocada din&#225;micamente, con los primeros &#8216;n&#8217;</span>
+<span style="color: #586e75;"> * caracteres de la cadena &#8216;str&#8217;. El caller toma ownership de la cadena</span>
+<span style="color: #586e75;"> * devuelta.</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * Devuelve NULL si no se pudo allocar memoria.</span>
+<span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">substr</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">str</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">n</span>);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">split()</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
+<span style="color: #586e75;"> * Devuelve en un arreglo din&#225;mico terminado en NULL todos los subsegmentos de</span>
+<span style="color: #586e75;"> * &#8216;str&#8217; separados por el car&#225;cter &#8216;sep&#8217;.</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * Ejemplo:</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> *        char **strv = split("abc,def,ghi,jkl", ',');</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * Devuelve:</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> *        {"abc", "def", "ghi", "jkl", NULL};</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * Tanto &#8216;strv&#8217; como las cadenas que contiene son allocadas din&#225;micamente.</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * El caller toma ownership del vector devuelto, que podr&#225; ser liberado con</span>
+<span style="color: #586e75;"> * free_strv(). La funci&#243;n devuelve NULL si fall&#243; alguna llamada a malloc().</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * N&#243;tese los siguientes casos bordes:</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> *        split("abc,,def", ',') &#8594; {"abc", "", "def", NULL};</span>
+<span style="color: #586e75;"> *        split("abc,def,", ',') &#8594; {"abc", "def", "", NULL};</span>
+<span style="color: #586e75;"> *        split(",abc,def", ',') &#8594; {"", "abc", "def", NULL};</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> *        split(",", ',') &#8594; {"", "", NULL};</span>
+<span style="color: #586e75;"> *        split("", ',')  &#8594; {"", NULL};</span>
+<span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span style="color: #b58900;">char</span> **<span style="color: #268bd2;">split</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">str</span>, <span style="color: #b58900;">char</span> <span style="color: #268bd2;">sep</span>);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">join()</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
+<span style="color: #586e75;"> * Devuelve una cadena, allocada din&#225;micamente, resultado de unir todas las</span>
+<span style="color: #586e75;"> * cadenas en el arreglo &#8216;strv&#8217; (que es de longitud &#8216;len&#8217;).</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * El caller toma ownership de la cadena devuelta. La funci&#243;n devuelve NULL</span>
+<span style="color: #586e75;"> * si no se pudo allocar memoria.</span>
+<span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">join</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #859900;">const</span> <span style="color: #268bd2;">strv</span>[], <span style="color: #b58900;">char</span> <span style="color: #268bd2;">sep</span>);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">free_strv()</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
+<span style="color: #586e75;"> * Libera un arreglo din&#225;mico de cadenas, y todas las cadenas que contiene.</span>
+<span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span style="color: #b58900;">void</span> <span style="color: #268bd2;">free_strv</span>(<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">strv</span>[]);
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Makefile</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<p>
+Pueden usar el siguiente <a href="Makefile">Makefile</a> para compilar el TP:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-makefile"><span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2 -MMD
+<span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
+<span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
+
+<span style="color: #268bd2;">MAIN</span> := tac tail words
+<span style="color: #268bd2;">SRCS</span> := $(<span style="color: #268bd2;">wildcard</span> *.c)
+<span style="color: #268bd2;">LIBS</span> := $(<span style="color: #268bd2;">filter-out</span> $(<span style="color: #268bd2;">MAIN</span>:<span style="color: #268bd2;">%</span>=%.o), $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.o))
+
+<span style="color: #268bd2;">all</span>: $(<span style="color: #268bd2;">MAIN</span>)
+
+<span style="color: #268bd2;">clean</span>:
+        rm -f $(<span style="color: #268bd2;">MAIN</span>) *.o *.d
+
+<span style="color: #268bd2;">$(</span><span style="color: #268bd2;">MAIN</span><span style="color: #268bd2;">)</span>: %: %.o $(<span style="color: #268bd2;">LIBS</span>)
+
+-include $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.d)
+
+<span style="color: #268bd2;">.PHONY</span>: all clean
+</pre>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
