@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-17 Sun 18:10 -->
+<!-- 2016-04-17 Sun 18:28 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -563,20 +563,29 @@ Pueden usar el siguiente <a href="Makefile">Makefile</a> para compilar el TP:
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2 -MMD
+<pre class="src src-makefile"><span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Flags de gcc. Se usan autom&#225;ticamente para compilar *.c &#8594; *.o</span>
+<span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2 -MMD
 <span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
 <span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
 
-<span style="color: #268bd2;">MAIN</span> := tac tail
-<span style="color: #268bd2;">SRCS</span> := $(<span style="color: #268bd2;">wildcard</span> *.c)
-<span style="color: #268bd2;">LIBS</span> := $(<span style="color: #268bd2;">filter-out</span> $(<span style="color: #268bd2;">MAIN</span>:<span style="color: #268bd2;">%</span>=%.o), $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.o))
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si se ejecuta `make` a secas, se compilar&#225;n tac, tail y strutil.</span>
+<span style="color: #268bd2;">all</span>: tac tail strutil.o
 
-<span style="color: #268bd2;">all</span>: $(<span style="color: #268bd2;">MAIN</span>)
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Se puede escribir `make tac`, `make tail` o `make strutil.o` para compilar</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">una parte del TP solamente.</span>
+<span style="color: #268bd2;">tac</span>: tac.o
+<span style="color: #268bd2;">tail</span>: tail.o
 
-<span style="color: #268bd2;">clean</span>:
-        rm -f $(<span style="color: #268bd2;">MAIN</span>) *.o *.d
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si tac o tail usan un TDA, se debe especificar bien en las lineas anteriores,</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">bien aqu&#237;. Ejemplos:</span>
 
-<span style="color: #268bd2;">$(</span><span style="color: #268bd2;">MAIN</span><span style="color: #268bd2;">)</span>: %: %.o $(<span style="color: #268bd2;">LIBS</span>)
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tac: cola.o</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tac: pila.o</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tail: lista.o</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tail: cola.o</span>
+
+<span style="color: #268bd2;">clean</span>::
+        rm -f tac tail *.o *.d
 
 -include $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.d)
 
