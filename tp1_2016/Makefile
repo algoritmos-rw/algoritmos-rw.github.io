@@ -2,7 +2,7 @@ CFLAGS := -g -std=c99 -Wall -Werror -Wformat=2 -MMD
 CFLAGS += -Wshadow -Wpointer-arith -Wunreachable-code
 CFLAGS += -Wconversion -Wno-sign-conversion -Wbad-function-cast
 
-MAIN := tac tail words
+MAIN := tac tail
 SRCS := $(wildcard *.c)
 LIBS := $(filter-out $(MAIN:%=%.o), $(SRCS:%.c=%.o))
 

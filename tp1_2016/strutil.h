@@ -14,29 +14,11 @@ char *substr(const char *str, size_t n);
 
 /*
  * Devuelve en un arreglo dinámico terminado en NULL todos los subsegmentos de
- * ‘str’ separados por el carácter ‘sep’.
+ * ‘str’ separados por el carácter ‘sep’. Tanto el arreglo devuelto como las
+ * cadenas que contiene son allocadas dinámicamente.
  *
- * Ejemplo:
- *
- *        char **strv = split("abc,def,ghi,jkl", ',');
- *
- * Devuelve:
- *
- *        {"abc", "def", "ghi", "jkl", NULL};
- *
- * Tanto ‘strv’ como las cadenas que contiene son allocadas dinámicamente.
- *
- * El caller toma ownership del vector devuelto, que podrá ser liberado con
- * free_strv(). La función devuelve NULL si falló alguna llamada a malloc().
- *
- * Nótese los siguientes casos bordes:
- *
- *        split("abc,,def", ',') → {"abc", "", "def", NULL};
- *        split("abc,def,", ',') → {"abc", "def", "", NULL};
- *        split(",abc,def", ',') → {"", "abc", "def", NULL};
- *
- *        split(",", ',') → {"", "", NULL};
- *        split("", ',')  → {"", NULL};
+ * El caller toma ownership del vector devuelto. La función devuelve NULL si
+ * falló alguna llamada a malloc().
  */
 char **split(const char *str, char sep);
 

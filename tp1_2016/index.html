@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-16 Sat 19:04 -->
+<!-- 2016-04-17 Sun 18:10 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -149,8 +149,8 @@ la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a> en un único archivo
 </p>
 
 <p>
-Como de costumbre, el asunto del mail debe contener el nombre del TP (<b>TP1</b>) y el
-número de padrón del alumno.
+Como de costumbre, el asunto del mail debe contener el nombre del TP (<b>“TP1”</b>) y
+el número de padrón del alumno.
 </p>
 
 <p>
@@ -167,14 +167,19 @@ La entrega incluye, obligatoriamente, los siguientes archivos:
 <li><i>pila.c, cola.h</i> y <i>lista.c</i> (las implementaciones del alumno de estos TDA)</li>
 </ul>
 
+<p>
+Se puede incluir otros archivos, por ejemplo <i>lib.h</i> y <i>lib.c</i> con funciones
+comunes.
+</p>
+
 <div id="table-of-contents">
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">El programa <i>tac</i></a></li>
 <li><a href="#orgheadline2">El programa <i>tail</i></a></li>
-<li><a href="#orgheadline3">Uso de cadenas <i>(strutil.c)</i></a></li>
-<li><a href="#orgheadline4">Makefile</a></li>
+<li><a href="#orgheadline3">Manejo de cadenas</a></li>
+<li><a href="#orgheadline4">Makefile de ejemplo</a></li>
 </ul>
 </div>
 </div>
@@ -188,13 +193,13 @@ Se pide implementar una versión simplificada de la utilidad <a href="http://www
 </p>
 
 <p>
-<i>tac</i> acepta un nombre de archivo como único argumento, e imprime por salida
+<i>tac</i> acepta como único argumento un nombre de archivo, e imprime por salida
 estándar las líneas del archivo en orden inverso.
 </p>
 
 <p>
 Por ejemplo, si tenemos un archivo llamado <i>nombres.txt</i> con los nombres
-“Alicia”, “Bruno”, “Carolina” y “Daniel”, uno por línea en ese orden, <i>tac</i>
+“Alicia”, “Bruno”, “Carolina” y “Daniel”, uno por línea y en ese orden, <i>tac</i>
 imprime:
 </p>
 
@@ -213,12 +218,10 @@ Alicia
 <ol class="org-ol">
 <li>Se puede asumir que el tamaño del archivo es menor que la cantidad de
 memoria disponible. Por tanto, se permite almacenar todo el archivo en
-memoria si fuere necesario (complejidad espacial lineal).</li>
-
-<li>Para la lectura del archivo, se recomienda usar la función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a>.</li>
+memoria si fuere necesario (con complejidad espacial lineal).</li>
 
 <li><p>
-En caso de no existir el archivo pasado como parámetro, el programa termina
+En caso de no existir el archivo pasado como argumento, el programa termina
 con código de salida 1, imprimiendo antes por salida de error estándar:
 </p>
 
@@ -229,17 +232,72 @@ No se pudo abrir el archivo
 
 <li><p>
 En caso de no recibir ningún argumento, o recibir más de uno, el programa
-también termina con código de salida 1, e imprime (también en stderr):
+también termina con código de salida 1, e imprime (también en <i>stderr</i>):
 </p>
 
 <pre class="example">
 $ ./tac
 Uso: ./tac &lt;ARCHIVO&gt;
+</pre>
 
+<pre class="example">
 $ ./tac uno.txt dos.txt
 Uso: ./tac &lt;ARCHIVO&gt;
 </pre></li>
 </ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Implementación</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+El programa se puede implementar en unas 50 líneas de C:
+</p>
+
+<ol class="org-ol">
+<li>verificar número de argumentos (CLA)</li>
+<li>abrir el archivo y leer todas las líneas</li>
+<li>imprimir las líneas en orden inverso</li>
+<li>liberar memoria</li>
+</ol>
+
+<p>
+<a id="orgtarget1"></a>
+Para la lectura del archivo, se recomienda usar la función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a>:
+</p>
+
+<pre class="example">
+ssize_t getline(char **buffer, size_t *capacidad, FILE *archivo);
+</pre>
+
+<p>
+La principal ventaja de getline() es que automáticamente reserva la memoria
+dinámica necesaria para leer la línea: no se necesita llamar a malloc() de
+manera manual, ni preocuparse si la línea “entrará” en el buffer.
+</p>
+
+<p>
+Sí se necesita, no obstante, liberar memoria: getline() llama a malloc() pero
+transfiere el “ownership” de la memoria al usuario.
+</p>
+
+<p>
+La reserva de memoria dinámica se consigue apuntando cada vez el parámetro
+<code>buffer</code> a NULL, y <code>capacidad</code> a 0:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #b58900;">char</span> *<span style="color: #268bd2;">linea</span> = <span style="color: #268bd2; font-weight: bold;">NULL</span>;
+<span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">capacidad</span> = 0;
+
+<span style="color: #859900;">if</span> (getline(&amp;linea, &amp;capacidad, archivo) &gt;= 0) {
+  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Se ley&#243; la siguiente l&#237;nea en memoria din&#225;mica.</span>
+}
+free(linea);  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Se debe liberar.</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -250,13 +308,13 @@ Uso: ./tac &lt;ARCHIVO&gt;
 <div class="outline-text-2" id="text-orgheadline2">
 <p>
 Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html">tail</a> de Unix. <i>tail</i>
-permite imprimir las últimas <i>N</i> lineas de un archivo, o de la entrada estándar.
+imprime las últimas <i>N</i> lineas de un archivo, o de la entrada estándar.
 </p>
 
 <p>
 En nuestro caso, el programa no acepta nombre de archivo y siempre trabaja con
 la entrada estándar. Nuestra implementación acepta un número entero <i>N</i> como
-único argumento. Ejemplo (usando el mismo archivos <i>nombres.txt</i>):
+único argumento. Por ejemplo, usando el mismo archivo <i>nombres.txt</i> de antes:
 </p>
 
 <pre class="example">
@@ -281,9 +339,9 @@ Daniel
 </pre>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Observaciones</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Observaciones</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <ol class="org-ol">
 <li><p>
 No se permite almacenar todo el archivo en memoria. Se puede almacenar, como
@@ -291,12 +349,12 @@ máximo, <i>N</i> líneas. Tampoco se permite el uso de archivos temporales.
 </p>
 
 <p>
-(Cabe notar que, como se trabaja con entrada estándar, esta no puede ser
-leída dos veces para averiguar el número de líneas.)
+Cabe notar que, al tratarse de entrada estándar, en ningún caso puede ser
+leída dos veces para averiguar el número de líneas primero.
 </p></li>
 
-<li>La función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a> puede usarse para leer entrada estándar también, usando
-la constante <code>stdin</code> como fuente.</li>
+<li>La función <a href="#orgtarget1">getline()</a> también sirve para leer entrada estándar, usando la
+constante <code>stdin</code> como archivo.</li>
 
 <li><p>
 En caso de recibir como argumento un número <i>menor</i> que 0, el programa termina
@@ -316,17 +374,44 @@ El número de líneas no puede ser negativo.
 
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">Uso de cadenas <i>(strutil.c)</i></h2>
+<h2 id="orgheadline3">Manejo de cadenas</h2>
 <div class="outline-text-2" id="text-orgheadline3">
 <p>
 Se pide implementar las funciones del archivo <a href="strutil.h">strutil.h</a> que se describen a
 continuación.
 </p>
+
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline8">Subcadenas con substr()</a></li>
+<li><a href="#orgheadline9">Arreglos dinámicos de cadenas</a>
+<ul>
+<li><a href="#orgheadline10">split()</a></li>
+<li><a href="#orgheadline11">join()</a></li>
+<li><a href="#orgheadline12">free_strv()</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">substr()</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Subcadenas con substr()</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+La función <i>substr()</i> permite obtener un prefijo de longitud <i>N</i> de una cadena
+dada.
+</p>
+
+<p>
+Por ejemplo, la llamada <code>substr("Hola mundo", 6)</code> devolvería la cadena <i>“Hola m”</i>.
+</p>
+
+<p>
+Documentación:
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
@@ -342,46 +427,95 @@ continuación.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">split()</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">Arreglos dinámicos de cadenas</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+</div><div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">split()</h4>
+<div class="outline-text-4" id="text-orgheadline10">
+<p>
+La función <i>split()</i> divide una cadena en subcadenas en cada ocurrencia de un
+caracter de separación determinado. Por ejemplo, separando por comas:
+</p>
+
+<pre class="example">
+split("abc,def,ghi", ',')  →  ["abc", "def", "ghi"]
+</pre>
+
+<p>
+En C, devolveremos el resultado como un arreglo dinámico de cadenas dinámicas
+terminado en NULL. Esto es:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejemplo de arreglo din&#225;mico de cadenas</span>
+<span style="color: #b58900;">char</span> **<span style="color: #268bd2;">strv</span> = malloc(<span style="color: #859900;">sizeof</span>(<span style="color: #b58900;">char</span>*) * 4);
+strv[0] = strdup(<span style="color: #2aa198;">"abc"</span>);
+strv[1] = strdup(<span style="color: #2aa198;">"def"</span>);
+strv[2] = strdup(<span style="color: #2aa198;">"ghi"</span>);
+strv[3] = <span style="color: #268bd2; font-weight: bold;">NULL</span>;
+</pre>
+</div>
+
+<p>
+El prototipo y la documentación de <i>split()</i> queda en:
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
 <span style="color: #586e75;"> * Devuelve en un arreglo din&#225;mico terminado en NULL todos los subsegmentos de</span>
-<span style="color: #586e75;"> * &#8216;str&#8217; separados por el car&#225;cter &#8216;sep&#8217;.</span>
+<span style="color: #586e75;"> * &#8216;str&#8217; separados por el car&#225;cter &#8216;sep&#8217;. Tanto el arreglo devuelto como las</span>
+<span style="color: #586e75;"> * cadenas que contiene son allocadas din&#225;micamente.</span>
 <span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> * Ejemplo:</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> *        char **strv = split("abc,def,ghi,jkl", ',');</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> * Devuelve:</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> *        {"abc", "def", "ghi", "jkl", NULL};</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> * Tanto &#8216;strv&#8217; como las cadenas que contiene son allocadas din&#225;micamente.</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> * El caller toma ownership del vector devuelto, que podr&#225; ser liberado con</span>
-<span style="color: #586e75;"> * free_strv(). La funci&#243;n devuelve NULL si fall&#243; alguna llamada a malloc().</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> * N&#243;tese los siguientes casos bordes:</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> *        split("abc,,def", ',') &#8594; {"abc", "", "def", NULL};</span>
-<span style="color: #586e75;"> *        split("abc,def,", ',') &#8594; {"abc", "def", "", NULL};</span>
-<span style="color: #586e75;"> *        split(",abc,def", ',') &#8594; {"", "abc", "def", NULL};</span>
-<span style="color: #586e75;"> *</span>
-<span style="color: #586e75;"> *        split(",", ',') &#8594; {"", "", NULL};</span>
-<span style="color: #586e75;"> *        split("", ',')  &#8594; {"", NULL};</span>
+<span style="color: #586e75;"> * El caller toma ownership del vector devuelto. La funci&#243;n devuelve NULL si</span>
+<span style="color: #586e75;"> * fall&#243; alguna llamada a malloc().</span>
 <span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
 <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">split</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">str</span>, <span style="color: #b58900;">char</span> <span style="color: #268bd2;">sep</span>);
 </pre>
 </div>
+
+<p>
+Casos borde:
+</p>
+
+<pre class="example">
+split("abc,,def", ',')  →  ["abc", "", "def"]
+split("abc,def,", ',')  →  ["abc", "def", ""]
+split(",abc,def", ',')  →  ["", "abc", "def"]
+
+split("", ',')  →  [""]
+split(",", ',') →  ["", ""]
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">join()</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">join()</h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<p>
+La función <i>join()</i> es la inversa de <i>split()</i>. Concatena un arreglo de cadenas
+terminado en NULL mediante un caracter de separación:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejemplo de uso de join</span>
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">strv</span>[] = {<span style="color: #2aa198;">"abc"</span>, <span style="color: #2aa198;">"def"</span>, <span style="color: #2aa198;">"ghi"</span>, <span style="color: #268bd2; font-weight: bold;">NULL</span>};
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">resultado</span> = join(strv, <span style="color: #2aa198;">';'</span>);  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">"abc;def;ghi"</span>
+
+<span style="color: #b58900;">char</span> **<span style="color: #268bd2;">palabras</span> = split(<span style="color: #2aa198;">"Hola mundo"</span>, <span style="color: #2aa198;">' '</span>);
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">otro_resultado</span> = join(palabras, <span style="color: #2aa198;">','</span>);  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">"Hola,mundo"</span>
+</pre>
+</div>
+
+<p>
+El prototipo y documentación es:
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
@@ -397,9 +531,15 @@ continuación.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">free_strv()</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">free_strv()</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+<p>
+<i>free_strv()</i> libera la memoria asociada con un arreglo dinámico de cadenas
+dinámicas:
+</p>
+
 <div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
@@ -411,10 +551,11 @@ continuación.
 </div>
 </div>
 </div>
+</div>
 
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">Makefile</h2>
+<h2 id="orgheadline4">Makefile de ejemplo</h2>
 <div class="outline-text-2" id="text-orgheadline4">
 <p>
 Pueden usar el siguiente <a href="Makefile">Makefile</a> para compilar el TP:
@@ -426,7 +567,7 @@ Pueden usar el siguiente <a href="Makefile">Makefile</a> para compilar el TP:
 <span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
 <span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
 
-<span style="color: #268bd2;">MAIN</span> := tac tail words
+<span style="color: #268bd2;">MAIN</span> := tac tail
 <span style="color: #268bd2;">SRCS</span> := $(<span style="color: #268bd2;">wildcard</span> *.c)
 <span style="color: #268bd2;">LIBS</span> := $(<span style="color: #268bd2;">filter-out</span> $(<span style="color: #268bd2;">MAIN</span>:<span style="color: #268bd2;">%</span>=%.o), $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.o))
 
