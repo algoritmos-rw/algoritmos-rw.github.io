@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-17 Sun 18:28 -->
+<!-- 2016-04-18 Mon 10:38 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -231,8 +231,9 @@ No se pudo abrir el archivo
 </pre></li>
 
 <li><p>
-En caso de no recibir ningún argumento, o recibir más de uno, el programa
-también termina con código de salida 1, e imprime (también en <i>stderr</i>):
+<a id="orgtarget1"></a> En caso de no recibir ningún argumento, o recibir más de uno, el
+programa también termina con código de salida 1, e imprime (también en
+<i>stderr</i>):
 </p>
 
 <pre class="example">
@@ -263,7 +264,7 @@ El programa se puede implementar en unas 50 líneas de C:
 </ol>
 
 <p>
-<a id="orgtarget1"></a>
+<a id="orgtarget2"></a>
 Para la lectura del archivo, se recomienda usar la función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a>:
 </p>
 
@@ -353,7 +354,7 @@ Cabe notar que, al tratarse de entrada estándar, en ningún caso puede ser
 leída dos veces para averiguar el número de líneas primero.
 </p></li>
 
-<li>La función <a href="#orgtarget1">getline()</a> también sirve para leer entrada estándar, usando la
+<li>La función <a href="#orgtarget2">getline()</a> también sirve para leer entrada estándar, usando la
 constante <code>stdin</code> como archivo.</li>
 
 <li><p>
@@ -366,12 +367,25 @@ $ ./tail -10
 El número de líneas no puede ser negativo.
 </pre></li>
 
-<li>El caso de número de argumentos incorrectos se maneja igual que para <i>tac</i>.</li>
+<li><p>
+El caso de número de argumentos incorrectos se maneja <a href="#orgtarget1">igual</a> que para <i>tac</i>.
+Además, se imprime el mismo error si el argumento no es enteramente
+numérico:
+</p>
+
+<pre class="example">
+$ ./tail abc.txt
+Uso: ./tail &lt;N&gt;
+</pre>
+
+<pre class="example">
+$ ./tail 12xyz
+Uso: ./tail &lt;N&gt;
+</pre></li>
 </ol>
 </div>
 </div>
 </div>
-
 
 <div id="outline-container-orgheadline3" class="outline-2">
 <h2 id="orgheadline3">Manejo de cadenas</h2>
