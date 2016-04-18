@@ -18,7 +18,7 @@ char *substr(const char *str, size_t n);
  * cadenas que contiene son allocadas dinámicamente.
  *
  * El caller toma ownership del vector devuelto. La función devuelve NULL si
- * falló alguna llamada a malloc().
+ * falló alguna llamada a malloc(), o si ‘sep’ es '\0'.
  */
 char **split(const char *str, char sep);
 
