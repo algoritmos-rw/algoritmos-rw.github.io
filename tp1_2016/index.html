@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-18 Mon 13:16 -->
+<!-- 2016-04-19 Tue 08:04 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -299,6 +299,20 @@ La reserva de memoria dinámica se consigue apuntando cada vez el parámetro
 free(linea);  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Se debe liberar.</span>
 </pre>
 </div>
+
+<p>
+La función getline() se encuentra definida en <code>stdio.h</code>. Como es una función de
+POSIX.1-2008, hay que declarar un identificador para indicar que lo queremos
+usar:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Al principio de tail.c y tac.c (antes de otros include):</span>
+<span style="color: #268bd2;">#define</span> <span style="color: #268bd2;">_POSIX_C_SOURCE</span> 200809L
+<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -534,7 +548,7 @@ El prototipo y documentación es:
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
 <span style="color: #586e75;"> * Devuelve una cadena, allocada din&#225;micamente, resultado de unir todas las</span>
-<span style="color: #586e75;"> * cadenas en el arreglo &#8216;strv&#8217; (que es de longitud &#8216;len&#8217;).</span>
+<span style="color: #586e75;"> * cadenas del arreglo terminado en NULL &#8216;strv&#8217;.</span>
 <span style="color: #586e75;"> *</span>
 <span style="color: #586e75;"> * El caller toma ownership de la cadena devuelta. La funci&#243;n devuelve NULL</span>
 <span style="color: #586e75;"> * si no se pudo allocar memoria.</span>

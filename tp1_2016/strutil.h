@@ -24,7 +24,7 @@ char **split(const char *str, char sep);
 
 /*
  * Devuelve una cadena, allocada dinámicamente, resultado de unir todas las
- * cadenas en el arreglo ‘strv’ (que es de longitud ‘len’).
+ * cadenas del arreglo terminado en NULL ‘strv’.
  *
  * El caller toma ownership de la cadena devuelta. La función devuelve NULL
  * si no se pudo allocar memoria.
