@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-19 Tue 08:04 -->
+<!-- 2016-04-23 Sat 06:59 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -144,17 +144,13 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">TP 1: manejo de archivos y cadenas</h1>
 <p>
-Este trabajo práctico consiste en tres partes separadas, que se entregarán en
-la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a> en un único archivo ZIP.
+Este trabajo práctico consiste en tres partes separadas, con fecha de entrega <b>2
+de mayo de 2016</b>.
 </p>
 
 <p>
-Como de costumbre, el asunto del mail debe contener el nombre del TP (<b>“TP1”</b>) y
-el número de padrón del alumno.
-</p>
-
-<p>
-La entrega incluye, obligatoriamente, los siguientes archivos:
+La entrega incluye, obligatoriamente, un <a href="#orgtarget1">informe</a> y los siguientes archivos de
+código:
 </p>
 
 <ul class="org-ul">
@@ -165,7 +161,23 @@ La entrega incluye, obligatoriamente, los siguientes archivos:
 <li><i>strutil.c</i></li>
 
 <li><i>pila.c, cola.h</i> y <i>lista.c</i> (las implementaciones del alumno de estos TDA)</li>
+
+<li>un archivo <i>deps.mk</i> con las <a href="#orgheadline1">dependencias</a> del proyecto en formato make</li>
 </ul>
+
+<p>
+La entrega se realiza:
+</p>
+
+<ol class="org-ol">
+<li>por mail a la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a>, código e informe en un único archivo ZIP. El
+asunto debe incluir el padrón del alumno (sin punto decimal) y nombre del
+TP (<i>TP1</i> en este caso).</li>
+
+<li>en papel durante la clase, tanto el informe como el código. El código se
+debe imprimir en fuente <code>monoespacio</code>; no se debe imprimir el código de los
+TDA.</li>
+</ol>
 
 <p>
 Se puede incluir otros archivos, por ejemplo <i>lib.h</i> y <i>lib.c</i> con funciones
@@ -176,18 +188,18 @@ comunes.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">El programa <i>tac</i></a></li>
-<li><a href="#orgheadline2">El programa <i>tail</i></a></li>
-<li><a href="#orgheadline3">Manejo de cadenas</a></li>
-<li><a href="#orgheadline4">Makefile de ejemplo</a></li>
+<li><a href="#orgheadline2">El programa <i>tac</i></a></li>
+<li><a href="#orgheadline3">El programa <i>tail</i></a></li>
+<li><a href="#orgheadline4">Manejo de cadenas</a></li>
+<li><a href="#orgheadline5">Criterios de aprobación</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">El programa <i>tac</i></h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">El programa <i>tac</i></h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tac-invocation.html">tac</a> de Unix.
 </p>
@@ -212,9 +224,9 @@ Alicia
 </pre>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Observaciones</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Observaciones</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <ol class="org-ol">
 <li>Se puede asumir que el tamaño del archivo es menor que la cantidad de
 memoria disponible. Por tanto, se permite almacenar todo el archivo en
@@ -231,7 +243,7 @@ No se pudo abrir el archivo
 </pre></li>
 
 <li><p>
-<a id="orgtarget1"></a> En caso de no recibir ningún argumento, o recibir más de uno, el
+<a id="orgtarget2"></a> En caso de no recibir ningún argumento, o recibir más de uno, el
 programa también termina con código de salida 1, e imprime (también en
 <i>stderr</i>):
 </p>
@@ -249,9 +261,9 @@ Uso: ./tac &lt;ARCHIVO&gt;
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Implementación</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Implementación</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 El programa se puede implementar en unas 50 líneas de C:
 </p>
@@ -264,7 +276,7 @@ El programa se puede implementar en unas 50 líneas de C:
 </ol>
 
 <p>
-<a id="orgtarget2"></a>
+<a id="orgtarget3"></a>
 Para la lectura del archivo, se recomienda usar la función <a href="http://man7.org/linux/man-pages/man3/getline.3.html">getline()</a>:
 </p>
 
@@ -285,7 +297,7 @@ malloc() pero transfiere el “ownership” de la memoria al usuario.
 
 <p>
 La reserva de memoria dinámica se consigue apuntando cada vez el parámetro
-<code>buffer</code> a NULL, y <code>capacidad</code> a 0:
+<tt>buffer</tt> a NULL, y <tt>capacidad</tt> a 0:
 </p>
 
 <div class="org-src-container">
@@ -301,7 +313,7 @@ free(linea);  <span style="color: #586e75; font-style: italic;">// </span><span 
 </div>
 
 <p>
-La función getline() se encuentra definida en <code>stdio.h</code>. Como es una función de
+La función getline() se encuentra definida en <tt>stdio.h</tt>. Como es una función de
 POSIX.1-2008, hay que declarar un identificador para indicar que lo queremos
 usar:
 </p>
@@ -318,9 +330,9 @@ usar:
 </div>
 
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">El programa <i>tail</i></h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">El programa <i>tail</i></h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html">tail</a> de Unix. <i>tail</i>
 imprime las últimas <i>N</i> lineas de un archivo, o de entrada estándar.
@@ -354,9 +366,9 @@ Daniel
 </pre>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">Observaciones</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Observaciones</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <ol class="org-ol">
 <li><p>
 No se permite almacenar todo el archivo en memoria. Se puede almacenar, como
@@ -368,8 +380,8 @@ Cabe notar que, al tratarse de entrada estándar, en ningún caso puede ser
 leída dos veces para averiguar el número de líneas primero.
 </p></li>
 
-<li>La función <a href="#orgtarget2">getline()</a> también sirve para leer de entrada estándar, usando la
-constante <code>stdin</code> como archivo.</li>
+<li>La función <a href="#orgtarget3">getline()</a> también sirve para leer de entrada estándar, usando la
+constante <tt>stdin</tt> como archivo.</li>
 
 <li><p>
 En caso de recibir como argumento un número <i>menor</i> que 0, el programa termina
@@ -382,7 +394,7 @@ El número de líneas no puede ser negativo.
 </pre></li>
 
 <li><p>
-El caso de número de argumentos incorrectos se maneja <a href="#orgtarget1">igual</a> que para <i>tac</i>.
+El caso de número de argumentos incorrectos se maneja <a href="#orgtarget2">igual</a> que para <i>tac</i>.
 Además, se imprime el mismo error si el argumento no es enteramente
 numérico:
 </p>
@@ -399,11 +411,71 @@ Uso: ./tail &lt;N&gt;
 </ol>
 </div>
 </div>
+
+
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">Archivo de dependencias</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<p>
+Se debe incluir un archivo <i>deps.mk</i> para indicar al corrector automático cómo
+compilar la entrega.
+</p>
+
+<p>
+En particular, se debe indicar qué TDA emplea cada programa.
+</p>
+
+<p>
+Por ejemplo, si <i>tac</i> usara un hash y <i>tail</i> usase un árbol, el archivo <i>deps.mk</i>
+consistiría de las siguientes dos líneas:
+</p>
+
+<pre class="example">
+# deps.mk: cada línea indica de qué OBJETOS se compone el programa.
+tac: tac.o hash.o
+tail: tail.o arbol.o
+</pre>
+
+<p>
+En el caso de haber creado una biblioteca de funcionalidad común, <i>lib.c</i>, se
+debería indicar también <i>lib.o</i> como dependencia:
+</p>
+
+<pre class="example">
+tac: tac.o lib.o hash.o
+tail: tail.o lib.o arbol.o
+</pre>
+
+<p>
+Para la compilación, pueden invocar a <tt>gcc</tt> a mano como hasta ahora, o emplear el
+siguiente <a href="Makefile">Makefile</a>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-makefile"><span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Flags de gcc. Se usan autom&#225;ticamente para compilar *.c &#8594; *.o</span>
+<span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2
+<span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
+<span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
+
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si se ejecuta `make` a secas, se compilar&#225;n tac, tail y strutil.</span>
+<span style="color: #586e75; font-style: italic;">#</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Tambi&#233;n se puede invocar `make tac`, `make tail` o `make strutil.o` para</span>
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">compilar una parte del TP solamente.</span>
+
+<span style="color: #268bd2;">all</span>: tac tail strutil.o
+
+<span style="color: #859900;">include</span> <span style="color: #268bd2;">deps.mk</span>
+</pre>
+</div>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">Manejo de cadenas</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Manejo de cadenas</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 Se pide implementar las funciones del archivo <a href="strutil.h">strutil.h</a> que se describen a
 continuación.
@@ -411,12 +483,12 @@ continuación.
 
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline8">Subcadenas con substr()</a></li>
-<li><a href="#orgheadline9">Arreglos dinámicos de cadenas</a>
+<li><a href="#orgheadline9">Subcadenas con substr()</a></li>
+<li><a href="#orgheadline10">Arreglos dinámicos de cadenas</a>
 <ul>
-<li><a href="#orgheadline10">split()</a></li>
-<li><a href="#orgheadline11">join()</a></li>
-<li><a href="#orgheadline12">free_strv()</a></li>
+<li><a href="#orgheadline11">split()</a></li>
+<li><a href="#orgheadline12">join()</a></li>
+<li><a href="#orgheadline13">free_strv()</a></li>
 </ul>
 </li>
 </ul>
@@ -424,9 +496,9 @@ continuación.
 </div>
 
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">Subcadenas con substr()</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">Subcadenas con substr()</h3>
+<div class="outline-text-3" id="text-orgheadline9">
 <p>
 La función <i>substr()</i> permite obtener un prefijo de longitud <i>N</i> de una cadena
 dada.
@@ -456,12 +528,12 @@ Documentación:
 </div>
 
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">Arreglos dinámicos de cadenas</h3>
-<div class="outline-text-3" id="text-orgheadline9">
-</div><div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10">split()</h4>
-<div class="outline-text-4" id="text-orgheadline10">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">Arreglos dinámicos de cadenas</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+</div><div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11">split()</h4>
+<div class="outline-text-4" id="text-orgheadline11">
 <p>
 La función <i>split()</i> divide una cadena en subcadenas en cada ocurrencia de un
 caracter de separación determinado. Por ejemplo, separando por comas:
@@ -521,9 +593,9 @@ split(",", ',') →  ["", ""]
 </div>
 
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">join()</h4>
-<div class="outline-text-4" id="text-orgheadline11">
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">join()</h4>
+<div class="outline-text-4" id="text-orgheadline12">
 <p>
 La función <i>join()</i> es la inversa de <i>split()</i>. Concatena un arreglo de cadenas
 terminado en NULL mediante un caracter de separación:
@@ -560,9 +632,9 @@ El prototipo y documentación es:
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">free_strv()</h4>
-<div class="outline-text-4" id="text-orgheadline12">
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">free_strv()</h4>
+<div class="outline-text-4" id="text-orgheadline13">
 <p>
 <i>free_strv()</i> libera la memoria asociada con un arreglo dinámico de cadenas
 dinámicas:
@@ -582,44 +654,25 @@ dinámicas:
 </div>
 
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">Makefile de ejemplo</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Criterios de aprobación</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
-Pueden usar el siguiente <a href="Makefile">Makefile</a> para compilar el TP:
+El código entregado debe ser claro y legible y ajustarse a las especificaciones
+de la consigna. Debe compilar sin advertencias y correr sin errores de memoria.
 </p>
 
-<div class="org-src-container">
+<p>
+<a id="orgtarget1"></a>
+El informe deberá consistir de las siguientes partes:
+</p>
 
-<pre class="src src-makefile"><span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Flags de gcc. Se usan autom&#225;ticamente para compilar *.c &#8594; *.o</span>
-<span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2 -MMD
-<span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
-<span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
+<ul class="org-ul">
+<li>carátula con los datos personales del alumno y el ayudante asignado.</li>
 
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si se ejecuta `make` a secas, se compilar&#225;n tac, tail y strutil.</span>
-<span style="color: #268bd2;">all</span>: tac tail strutil.o
-
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Se puede escribir `make tac`, `make tail` o `make strutil.o` para compilar</span>
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">una parte del TP solamente.</span>
-<span style="color: #268bd2;">tac</span>: tac.o
-<span style="color: #268bd2;">tail</span>: tail.o
-
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si tac o tail usan un TDA, se debe especificar bien en las lineas anteriores,</span>
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">bien aqu&#237;. Ejemplos:</span>
-
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tac: cola.o</span>
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tac: pila.o</span>
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tail: lista.o</span>
-<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">tail: cola.o</span>
-
-<span style="color: #268bd2;">clean</span>::
-        rm -f tac tail *.o *.d
-
--include $(<span style="color: #268bd2;">SRCS</span>:<span style="color: #268bd2;">%.c</span>=%.d)
-
-<span style="color: #268bd2;">.PHONY</span>: all clean
-</pre>
-</div>
+<li>análisis y diseño de la solución, en particular: algoritmos y estructuras
+de datos utilizados; orden de ejecución de cada programa o función.</li>
+</ul>
 </div>
 </div>
 </div>
