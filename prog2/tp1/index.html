@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-23 Sat 06:59 -->
+<!-- 2016-04-25 Mon 19:59 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -162,7 +162,7 @@ código:
 
 <li><i>pila.c, cola.h</i> y <i>lista.c</i> (las implementaciones del alumno de estos TDA)</li>
 
-<li>un archivo <i>deps.mk</i> con las <a href="#orgheadline1">dependencias</a> del proyecto en formato make</li>
+<li>un archivo <i>deps.mk</i> con las <a href="#deps.mk">dependencias</a> del proyecto en formato make</li>
 </ul>
 
 <p>
@@ -188,18 +188,18 @@ comunes.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline2">El programa <i>tac</i></a></li>
-<li><a href="#orgheadline3">El programa <i>tail</i></a></li>
-<li><a href="#orgheadline4">Manejo de cadenas</a></li>
-<li><a href="#orgheadline5">Criterios de aprobación</a></li>
+<li><a href="#tac">El programa <i>tac</i></a></li>
+<li><a href="#tail">El programa <i>tail</i></a></li>
+<li><a href="#strutil">Manejo de cadenas</a></li>
+<li><a href="#criterios">Criterios de aprobación</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">El programa <i>tac</i></h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="tac"><a id="orgheadline3"></a>El programa <i>tac</i></h2>
+<div class="outline-text-2" id="text-tac">
 <p>
 Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tac-invocation.html">tac</a> de Unix.
 </p>
@@ -224,9 +224,9 @@ Alicia
 </pre>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Observaciones</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="tac-obs"><a id="orgheadline1"></a>Observaciones</h3>
+<div class="outline-text-3" id="text-tac-obs">
 <ol class="org-ol">
 <li>Se puede asumir que el tamaño del archivo es menor que la cantidad de
 memoria disponible. Por tanto, se permite almacenar todo el archivo en
@@ -261,9 +261,9 @@ Uso: ./tac &lt;ARCHIVO&gt;
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">Implementación</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="tac-impl"><a id="orgheadline2"></a>Implementación</h3>
+<div class="outline-text-3" id="text-tac-impl">
 <p>
 El programa se puede implementar en unas 50 líneas de C:
 </p>
@@ -330,9 +330,9 @@ usar:
 </div>
 
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">El programa <i>tail</i></h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="tail"><a id="orgheadline6"></a>El programa <i>tail</i></h2>
+<div class="outline-text-2" id="text-tail">
 <p>
 Se pide implementar una versión simplificada de la utilidad <a href="http://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html">tail</a> de Unix. <i>tail</i>
 imprime las últimas <i>N</i> lineas de un archivo, o de entrada estándar.
@@ -366,9 +366,9 @@ Daniel
 </pre>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">Observaciones</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="tail-obs"><a id="orgheadline4"></a>Observaciones</h3>
+<div class="outline-text-3" id="text-tail-obs">
 <ol class="org-ol">
 <li><p>
 No se permite almacenar todo el archivo en memoria. Se puede almacenar, como
@@ -413,9 +413,9 @@ Uso: ./tail &lt;N&gt;
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">Archivo de dependencias</h3>
-<div class="outline-text-3" id="text-orgheadline1">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="deps.mk"><a id="orgheadline5"></a>Archivo de dependencias</h3>
+<div class="outline-text-3" id="text-deps.mk">
 <p>
 Se debe incluir un archivo <i>deps.mk</i> para indicar al corrector automático cómo
 compilar la entrega.
@@ -447,8 +447,8 @@ tail: tail.o lib.o arbol.o
 </pre>
 
 <p>
-Para la compilación, pueden invocar a <tt>gcc</tt> a mano como hasta ahora, o emplear el
-siguiente <a href="Makefile">Makefile</a>:
+Para la compilación, pueden invocar a <tt>gcc</tt> a mano como hasta ahora o, de manera
+<b>opcional</b>, emplear el siguiente <a href="Makefile">Makefile</a>:
 </p>
 
 <div class="org-src-container">
@@ -473,9 +473,9 @@ siguiente <a href="Makefile">Makefile</a>:
 </div>
 
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">Manejo de cadenas</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="strutil"><a id="orgheadline12"></a>Manejo de cadenas</h2>
+<div class="outline-text-2" id="text-strutil">
 <p>
 Se pide implementar las funciones del archivo <a href="strutil.h">strutil.h</a> que se describen a
 continuación.
@@ -483,12 +483,12 @@ continuación.
 
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline9">Subcadenas con substr()</a></li>
-<li><a href="#orgheadline10">Arreglos dinámicos de cadenas</a>
+<li><a href="#substr">Subcadenas con substr()</a></li>
+<li><a href="#strv">Arreglos dinámicos de cadenas</a>
 <ul>
-<li><a href="#orgheadline11">split()</a></li>
-<li><a href="#orgheadline12">join()</a></li>
-<li><a href="#orgheadline13">free_strv()</a></li>
+<li><a href="#split">split()</a></li>
+<li><a href="#join">join()</a></li>
+<li><a href="#free_strv">free_strv()</a></li>
 </ul>
 </li>
 </ul>
@@ -496,9 +496,9 @@ continuación.
 </div>
 
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">Subcadenas con substr()</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="substr"><a id="orgheadline7"></a>Subcadenas con substr()</h3>
+<div class="outline-text-3" id="text-substr">
 <p>
 La función <i>substr()</i> permite obtener un prefijo de longitud <i>N</i> de una cadena
 dada.
@@ -528,12 +528,14 @@ Documentación:
 </div>
 
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">Arreglos dinámicos de cadenas</h3>
-<div class="outline-text-3" id="text-orgheadline10">
-</div><div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">split()</h4>
-<div class="outline-text-4" id="text-orgheadline11">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="strv"><a id="orgheadline11"></a>Arreglos dinámicos de cadenas</h3>
+<div class="outline-text-3" id="text-strv">
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="split"><a id="orgheadline8"></a>split()</h4>
+<div class="outline-text-4" id="text-split">
 <p>
 La función <i>split()</i> divide una cadena en subcadenas en cada ocurrencia de un
 caracter de separación determinado. Por ejemplo, separando por comas:
@@ -593,9 +595,9 @@ split(",", ',') →  ["", ""]
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">join()</h4>
-<div class="outline-text-4" id="text-orgheadline12">
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="join"><a id="orgheadline9"></a>join()</h4>
+<div class="outline-text-4" id="text-join">
 <p>
 La función <i>join()</i> es la inversa de <i>split()</i>. Concatena un arreglo de cadenas
 terminado en NULL mediante un caracter de separación:
@@ -632,9 +634,9 @@ El prototipo y documentación es:
 </div>
 
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">free_strv()</h4>
-<div class="outline-text-4" id="text-orgheadline13">
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="free_strv"><a id="orgheadline10"></a>free_strv()</h4>
+<div class="outline-text-4" id="text-free_strv">
 <p>
 <i>free_strv()</i> libera la memoria asociada con un arreglo dinámico de cadenas
 dinámicas:
@@ -654,12 +656,13 @@ dinámicas:
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">Criterios de aprobación</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="criterios"><a id="orgheadline14"></a>Criterios de aprobación</h2>
+<div class="outline-text-2" id="text-criterios">
 <p>
 El código entregado debe ser claro y legible y ajustarse a las especificaciones
-de la consigna. Debe compilar sin advertencias y correr sin errores de memoria.
+de la consigna. Debe compilar sin advertencias y correr sin errores de memoria
+(ver el <a href="#valgrind">uso de Valgrind</a> a continuación).
 </p>
 
 <p>
@@ -673,6 +676,51 @@ El informe deberá consistir de las siguientes partes:
 <li>análisis y diseño de la solución, en particular: algoritmos y estructuras
 de datos utilizados; orden de ejecución de cada programa o función.</li>
 </ul>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="valgrind"><a id="orgheadline13"></a>Ayuda con Valgrind</h3>
+<div class="outline-text-3" id="text-valgrind">
+<p>
+El uso de Valgrind con <i>tac</i> y <i>tail</i> tiene la particularidad de que los programas
+toman argumentos y leen y escriben de entrada y salida estándar.
+</p>
+
+<p>
+El paso de argumentos es trivial, se añaden a la línea de comandos al final:
+</p>
+
+<pre class="example">
+$ valgrind --leak-check=full --track-origins=yes ./tac nombres.txt
+                                                       ^^^^^^^^^^^
+$ valgrind --leak-check=full --track-origins=yes ./tail 10
+                                                        ^^
+</pre>
+
+<p>
+En el caso de <i>tail</i>, sin embargo, hay que permitir que lea de entrada estándar;
+pero se realiza de igual manera que en el <a href="#orgexampleblock1">ejemplo</a>:
+</p>
+
+<pre class="example">
+$ cat nombres.txt | valgrind --leak-check=full --track-origins=yes ./tail 2
+  ^^^^^^^^^^^^^^^
+</pre>
+
+<p>
+Por último, si lo que imprimen por salida estándar <i>tac</i> o <i>tail</i> resulta molesto
+para leer los mensajes de Valgrind, se puede eliminar para una ejecución
+añadiendo <code>&gt;/dev/null</code> al final. Por ejemplo:
+</p>
+
+<pre class="example">
+$ valgrind --leak-check=full --track-origins=yes ./tac nombres.txt &gt;/dev/null
+                                                                   ^^^^^^^^^^
+
+$ cat nombres.txt | valgrind --leak-check=full --track-origins=yes ./tail 2 &gt;/dev/null
+                                                                            ^^^^^^^^^^
+</pre>
+</div>
 </div>
 </div>
 </div>
