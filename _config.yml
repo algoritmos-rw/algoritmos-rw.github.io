@@ -1,1 +1,2 @@
 name: Test
+exclude: [org, Gemfile, Gemfile.lock]
