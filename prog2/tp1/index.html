@@ -170,9 +170,10 @@ La entrega se realiza:
 </p>
 
 <ol class="org-ol">
-<li>por mail a la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a>: todo el código en un único archivo ZIP, más
-el informe como un adjunto adicional. El asunto debe incluir el padrón del
-alumno (sin punto decimal) y nombre del TP (<i>TP1</i> en este caso).</li>
+<li>por mail a la <a href="mailto:tps.7541rw@gmail.com">casilla de TPs</a>: todos los archivos mencionados en un único
+archivo ZIP, más el informe como un adjunto adicional sin comprimir. El
+asunto debe incluir el padrón del alumno (sin punto decimal) y nombre del
+TP (<i>TP1</i> en este caso).</li>
 
 <li>en papel durante la clase, tanto el informe como el código. El código se
 debe imprimir en fuente <code>monoespacio</code>; no se debe imprimir el código de los
@@ -462,9 +463,12 @@ Para la compilación, pueden invocar a <tt>gcc</tt> a mano como hasta ahora o, d
 <div class="org-src-container">
 
 <pre class="src src-makefile"><span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Flags de gcc. Se usan autom&#225;ticamente para compilar *.c &#8594; *.o</span>
-<span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Werror -Wformat=2
+<span style="color: #268bd2;">CFLAGS</span> := -g -std=c99 -Wall -Wformat=2
 <span style="color: #268bd2;">CFLAGS</span> += -Wshadow -Wpointer-arith -Wunreachable-code
 <span style="color: #268bd2;">CFLAGS</span> += -Wconversion -Wno-sign-conversion -Wbad-function-cast
+
+<span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Se pueden comentar durante el desarrollo.</span>
+<span style="color: #268bd2;">CFLAGS</span> += -Werror
 
 <span style="color: #586e75; font-style: italic;"># </span><span style="color: #586e75;">Si se ejecuta `make` a secas, se compilar&#225;n tac, tail y strutil.</span>
 <span style="color: #586e75; font-style: italic;">#</span>
