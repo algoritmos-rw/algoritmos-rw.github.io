@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 2016-04-26 Tue 14:03 -->
 <meta  charset="utf-8">
 <meta  name="viewport" content="width=device-width, initial-scale=1">
 <title>TP 1: manejo de archivos y cadenas</title>
@@ -616,7 +615,7 @@ terminado en NULL mediante un caracter de separación:
 <div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Ejemplo de uso de join</span>
-<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">strv</span>[] = {<span style="color: #2aa198;">"abc"</span>, <span style="color: #2aa198;">"def"</span>, <span style="color: #2aa198;">"ghi"</span>, <span style="color: #268bd2; font-weight: bold;">NULL</span>};
+<span style="color: #b58900;">char</span> **<span style="color: #268bd2;">strv</span> = split(<span style="color: #2aa198;">"abc,def,ghi"</span>, <span style="color: #2aa198;">','</span>);
 <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">resultado</span> = join(strv, <span style="color: #2aa198;">';'</span>);  <span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">"abc;def;ghi"</span>
 
 <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">palabras</span> = split(<span style="color: #2aa198;">"Hola mundo"</span>, <span style="color: #2aa198;">' '</span>);
@@ -637,9 +636,20 @@ El prototipo y documentación es:
 <span style="color: #586e75;"> * El caller toma ownership de la cadena devuelta. La funci&#243;n devuelve NULL</span>
 <span style="color: #586e75;"> * si no se pudo allocar memoria.</span>
 <span style="color: #586e75;"> </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">join</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #859900;">const</span> <span style="color: #268bd2;">strv</span>[], <span style="color: #b58900;">char</span> <span style="color: #268bd2;">sep</span>);
+<span style="color: #b58900;">char</span> *<span style="color: #268bd2;">join</span>(<span style="color: #b58900;">char</span> **<span style="color: #268bd2;">strv</span>, <span style="color: #b58900;">char</span> <span style="color: #268bd2;">sep</span>);
 </pre>
 </div>
+
+<p>
+Casos borde:
+</p>
+
+<pre class="example">
+join([])        →  ""
+join([""])      →  ""
+join(["abc"])   →  "abc"
+join(["", ""])  →  ","
+</pre>
 </div>
 </div>
 

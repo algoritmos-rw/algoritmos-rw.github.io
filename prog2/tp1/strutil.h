@@ -29,7 +29,7 @@ char **split(const char *str, char sep);
  * El caller toma ownership de la cadena devuelta. La función devuelve NULL
  * si no se pudo allocar memoria.
  */
-char *join(const char *const strv[], char sep);
+char *join(char **strv, char sep);
 
 /*
  * Libera un arreglo dinámico de cadenas, y todas las cadenas que contiene.
