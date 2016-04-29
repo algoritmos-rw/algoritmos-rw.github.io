@@ -138,6 +138,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -181,8 +203,8 @@ TDA.</li>
 </ol>
 
 <p>
-Se puede incluir otros archivos, por ejemplo <i>lib.h</i> y <i>lib.c</i> con funciones
-comunes.
+Se puede incluir otros archivos fuente con funciones comunes, siempre que el
+orden de dependencias quede especificado en <i>deps.mk</i>.
 </p>
 
 <div id="table-of-contents">
@@ -329,9 +351,10 @@ usar:
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Al principio de tail.c y tac.c (antes de otros include):</span>
+<pre class="src src-c" id="orgsrcblock1"><span style="color: #586e75; font-style: italic;">// </span><span style="color: #586e75;">Al principio de tail.c y tac.c (antes de otros include):</span>
 <span style="color: #268bd2;">#define</span> <span style="color: #268bd2;">_POSIX_C_SOURCE</span> 200809L
 <span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;stdio.h&gt;</span>
+<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">&lt;string.h&gt;</span>
 </pre>
 </div>
 </div>
@@ -537,6 +560,10 @@ Documentación:
 <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">substr</span>(<span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> *<span style="color: #268bd2;">str</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">n</span>);
 </pre>
 </div>
+
+<p>
+<b>Ayuda</b>: usar la función <a href="http://man7.org/linux/man-pages/man3/strncpy.3.html">strncpy()</a>.
+</p>
 </div>
 </div>
 
@@ -604,9 +631,13 @@ split(",abc,def", ',')  →  ["", "abc", "def"]
 split("", ',')  →  [""]
 split(",", ',') →  ["", ""]
 </pre>
-</div>
-</div>
 
+<p>
+<b>Ayuda</b>: usar la función <a href="http://man7.org/linux/man-pages/man3/strchr.3.html">strchr()</a> para encontrar el separador, y la propia
+función <a href="#substr">substr()</a> para realizar la copia.
+</p>
+</div>
+</div>
 
 <div id="outline-container-orgheadline9" class="outline-4">
 <h4 id="join"><a id="orgheadline9"></a>join()</h4>
@@ -654,9 +685,29 @@ join([""])      →  ""
 join(["abc"])   →  "abc"
 join(["", ""])  →  ","
 </pre>
-</div>
-</div>
 
+<p>
+<b>Ayuda</b>: usar la función <a href="http://man7.org/linux/man-pages/man3/stpncpy.3.html">stpncpy()</a> para concatenar cadenas. (Necesita la macro
+<tt>_POSIX_C_SOURCE</tt> antes de incluir <tt>string.h</tt>, como se explicó, <a href="#orgsrcblock1">anteriormente</a>.)
+</p>
+
+<p>
+<b>Complejidad algorítmica:</b> se espera que la función tenga complejidad
+\(\mathcal{O}(n)\) tanto espacial como temporal (con \(n =\) longitud de la cadena
+resultante). Las pruebas del corrector automático proveen una indicación:
+</p>
+
+<pre class="example">
+[ RUN      ] test_join.no_cuadratico
+[       OK ] test_join.no_cuadratico (9 ms)
+</pre>
+
+<p>
+El tiempo debería permanecer bien por debajo de 1000 ms, incluso si el
+resultado es <i>OK</i>.
+</p>
+</div>
+</div>
 
 <div id="outline-container-orgheadline10" class="outline-4">
 <h4 id="free_strv"><a id="orgheadline10"></a>free_strv()</h4>
