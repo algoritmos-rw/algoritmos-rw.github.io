@@ -694,18 +694,47 @@ join(["", ""])  →  ","
 <p>
 <b>Complejidad algorítmica:</b> se espera que la función tenga complejidad
 \(\mathcal{O}(n)\) tanto espacial como temporal (con \(n =\) longitud de la cadena
-resultante). Las pruebas del corrector automático proveen una indicación:
+resultante).
+</p>
+
+<p>
+Las pruebas del corrector automático proveen una indicación. Este sería un test
+con comportamiento lineal:
 </p>
 
 <pre class="example">
-[ RUN      ] test_join.no_cuadratico
-[       OK ] test_join.no_cuadratico (9 ms)
+[ RUN      ] test_join.test_cuadratico_10000
+[       OK ] test_join.test_cuadratico_10000 (7 ms)
+[ RUN      ] test_join.test_cuadratico_20000
+[       OK ] test_join.test_cuadratico_20000 (14 ms)
+[ RUN      ] test_join.test_cuadratico_30000
+[       OK ] test_join.test_cuadratico_30000 (17 ms)
+[ RUN      ] test_join.test_cuadratico_40000
+[       OK ] test_join.test_cuadratico_40000 (27 ms)
+[ RUN      ] test_join.test_cuadratico_50000
+[       OK ] test_join.test_cuadratico_50000 (33 ms)
+[ RUN      ] test_join.test_cuadratico_60000
+[       OK ] test_join.test_cuadratico_60000 (40 ms)
 </pre>
 
 <p>
-El tiempo debería permanecer bien por debajo de 1000 ms, incluso si el
-resultado es <i>OK</i>.
+Y este con comportamiento cuadrático:
 </p>
+
+<pre class="example">
+[ RUN      ] test_join.test_cuadratico_10000
+[       OK ] test_join.test_cuadratico_10000 (48 ms)
+[ RUN      ] test_join.test_cuadratico_20000
+[       OK ] test_join.test_cuadratico_20000 (618 ms)
+[ RUN      ] test_join.test_cuadratico_30000
+[       OK ] test_join.test_cuadratico_30000 (1354 ms)
+[ RUN      ] test_join.test_cuadratico_40000
+[       OK ] test_join.test_cuadratico_40000 (2425 ms)
+[ RUN      ] test_join.test_cuadratico_50000
+[       OK ] test_join.test_cuadratico_50000 (4019 ms)
+[ RUN      ] test_join.test_cuadratico_60000
+[       OK ] test_join.test_cuadratico_60000 (5722 ms)
+</pre>
 </div>
 </div>
 
