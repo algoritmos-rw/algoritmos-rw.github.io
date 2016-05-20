@@ -112,11 +112,13 @@ Los valores de la iteración en cada una de las siguientes invocaciones deberán
 
 ### abb_rebalancear
 
-Se pide programar una función con la siguiente firma:
+Se pide programar una función externa (no primitiva) con la siguiente firma:
 
-    abb_t* abb_rebalancear(const abb_t* abb);
+    void abb_rebalanceado(const abb_t* orig, abb_t* dest);
 
-Que dado un árbol binario de búsqueda cree otro con los mismos elementos pero que sea un árbol completo, es decir, que todos los niveles estén completos excepto el último, que deberá estar lleno de izquierda a derecha.
+que dado un árbol binario de búsqueda añada a otro árbol inicialmente vacío todos sus elementos en un orden de inserción tal, que el árbol destino resulte un árbol completo.
+
+Un árbol completo es aquel que todos los niveles estén completos excepto el último, que deberá estar lleno de izquierda a derecha.
 
 La función debe ser O(n), siendo n la cantidad de nodos del árbol.
 
