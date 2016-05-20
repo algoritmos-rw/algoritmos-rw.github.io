@@ -12,7 +12,7 @@ TP2: utilidades con hashes, ABBs y heaps
       1. [uniq](#uniq)
       2. [join](#join)
       3. [abb_iter_crear_desde](#abbitercreardesde)
-      4. [abb_rebalancear](#abbrebalancear)
+      4. [abb_rebalanceado](#abbrebalanceado)
       5. [multi-merge](#multi-merge)
       6. [TDA mediana](#tda-mediana)
   2. [Condiciones de entrega](#condiciones-de-entrega)  
@@ -110,7 +110,7 @@ Los valores de la iteración en cada una de las siguientes invocaciones deberán
 - `abb_iter_crear_desde(9, 4)`: -
 
 
-### abb_rebalancear
+### abb_rebalanceado
 
 Se pide programar una función externa (no primitiva) con la siguiente firma:
 
