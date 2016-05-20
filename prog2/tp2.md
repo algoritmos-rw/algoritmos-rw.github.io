@@ -120,7 +120,7 @@ que dado un árbol binario de búsqueda añada a otro árbol inicialmente vacío
 
 Un árbol completo es aquel que todos los niveles estén completos excepto el último, que deberá estar lleno de izquierda a derecha.
 
-La función debe ser O(n), siendo n la cantidad de nodos del árbol.
+La función debe ser O(n log n), siendo n la cantidad de nodos del árbol.
 
 
 ### multi-merge
@@ -148,7 +148,7 @@ Implementar un TDA que permita calcular la mediana para una secuencia de número
 
     void calculador_mediana_destruir(mediana_t* mediana);
 
-Todas las primitivas deberán funcionar en tiempo constante, excepto agregar_valor, que debrerá funcionar en O(log n), siendo n el número de elementos de la estructura.
+Todas las primitivas deberán funcionar en tiempo constante, excepto agregar_valor, que deberá funcionar en O(log n), y destruir, que deberá funcionar en O(n), siendo n el número de elementos de la estructura.
 
 
 ## Condiciones de entrega
