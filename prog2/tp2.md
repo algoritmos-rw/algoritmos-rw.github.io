@@ -9,14 +9,14 @@ TP2: utilidades con hashes, ABBs y heaps
 
 ## Contenido
   1. [Ejercicios](#ejercicios)
-    1. [uniq](#uniq)
-    2. [join](#join)
-    3. [abb_iter_crear_desde](#abb_iter_crear_desde)
-    4. [abb_rebalancear](#abb_rebalancear)
-    5. [multi-merge](#multi-merge)
-    6. [TDA mediana](#tda-mediana)
+      1. [uniq](#uniq)
+      2. [join](#join)
+      3. [abb_iter_crear_desde](#abbitercreardesde)
+      4. [abb_rebalancear](#abbrebalancear)
+      5. [multi-merge](#multi-merge)
+      6. [TDA mediana](#tda-mediana)
   2. [Condiciones de entrega](#condiciones-de-entrega)  
-  3. [Criterios de aprobación](#criterios-de-aprobaci-n)
+  3. [Criterios de aprobación](#criterios-de-aprobacin)
 
 ## Ejercicios
 
@@ -134,7 +134,7 @@ Uso:
     ./multi-merge arch1 arch2 arch3 ... archN
 
 
-### mediana_t
+### TDA mediana
 
 Implementar un TDA que permita calcular la mediana para una secuencia de números que se le ingresarán. El TDA debe contar con las siguientes primitivas:
 
