@@ -138,17 +138,15 @@ Uso:
 
 ### TDA mediana
 
-Implementar un TDA que permita calcular la mediana para una secuencia de números que se le ingresarán. El TDA debe contar con las siguientes primitivas:
+Implementar un TDA que permita calcular la mediana para una secuencia de números diferentes que se le ingresarán. El TDA debe contar con las siguientes primitivas:
 
-    mediana_t* calculador_mediana_crear();
+  - `mediana_t* calculador_mediana_crear();`, que deberá inicializar el TDA en O(1).
 
-    bool calculador_mediana_agregar_valor(mediana_t* mediana, double valor);
+  - `bool calculador_mediana_agregar_valor(mediana_t* mediana, double valor);`, que agregará un valor a la estructura en O(log n). Esta primitiva devolverá `true` cuando se agrega el valor exitosamente y `false` en caso contrario.
 
-    double calculador_mediana_obtener_mediana(mediana_t* mediana);
+  - `double calculador_mediana_obtener_mediana(mediana_t* mediana);`, que devolverá la mediana de acuerdo a los elementos que le fueron ingresados en O(1).
 
-    void calculador_mediana_destruir(mediana_t* mediana);
-
-Todas las primitivas deberán funcionar en tiempo constante, excepto agregar_valor, que deberá funcionar en O(log n), y destruir, que deberá funcionar en O(n), siendo n el número de elementos de la estructura.
+  - `void calculador_mediana_destruir(mediana_t* mediana);`, que destruirá la estructura en O(n).
 
 
 ## Condiciones de entrega
