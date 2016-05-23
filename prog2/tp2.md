@@ -104,7 +104,7 @@ Por ejemplo, dado el siguiente árbol:
 Los valores de la iteración en cada una de las siguientes invocaciones deberán ser:
 
 - `abb_iter_crear_desde(4, 9)`: 4, 5, 6, 7, 9
-- `abb_iter_crear_desde(7, NULL)`: 7, 9, 17, 22, 20
+- `abb_iter_crear_desde(7, NULL)`: 7, 9, 17, 20, 22
 - `abb_iter_crear_desde(4, 8)`: 4, 5, 6, 7
 - `abb_iter_crear_desde(13, 22)`: 17, 22
 - `abb_iter_crear_desde(9, 4)`: -
