@@ -114,7 +114,7 @@ Los valores de la iteración en cada una de las siguientes invocaciones deberán
 
 Se pide programar una función externa (no primitiva) con la siguiente firma:
 
-    void abb_rebalanceado(const abb_t* orig, abb_t* dest);
+    void abb_rebalanceado(abb_t* orig, abb_t* dest);
 
 que dado un árbol binario de búsqueda añada a otro árbol inicialmente vacío todos sus elementos en un orden de inserción tal, que el árbol destino resulte un árbol completo.
 
