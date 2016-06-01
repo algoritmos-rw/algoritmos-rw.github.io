@@ -116,9 +116,9 @@ Se pide programar una función externa (no primitiva) con la siguiente firma:
 
     void abb_rebalanceado(abb_t* orig, abb_t* dest);
 
-que dado un árbol binario de búsqueda añada a otro árbol inicialmente vacío todos sus elementos en un orden de inserción tal, que el árbol destino resulte un árbol completo.
+que dado un árbol binario de búsqueda añada a otro árbol inicialmente vacío todos sus elementos en un orden de inserción tal, que el árbol destino quede balanceado.
 
-Un árbol completo es aquel que todos los niveles estén completos excepto el último, que deberá estar lleno de izquierda a derecha.
+En un árbol balanceado se cumple _para todos los nodos_ (no solo la raíz) que la diferencia de altura entre su subárbol izquierdo y su subárbol derecho es 0 o 1.
 
 La función debe ser O(n log n), siendo n la cantidad de nodos del árbol.
 
