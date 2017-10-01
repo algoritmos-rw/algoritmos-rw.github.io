@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="shortcut icon" href="{{ '/assets/img/favicon.ico' | relative_url }}" type="image/x-icon">
 </head>
-<body>
-  <div class="container">
 
-  {{ content }}
+<header class="cabezera" >
+        <h1><span>Cursos Wachenhauzer</span></h1>
+        <p class="kicker">Facultad de Ingeniería de Buenos Aires</p>
+</header>
 
-  </div>
-</body>
+{{content}}
+
 </html>
