@@ -5,16 +5,7 @@ description: >-
   Cursos Wachenchauzer
   Facultad de Ingeniería, Universidad de Buenos Aires.
 
-
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-
-# materia: sitio web
-# (markdown) llamar con [Titulo]({{site.materia}}) 
-# (html) llamar con   <p><a href="{{site.materia}}">Titulo</a></p>
-algo1: http://www.algoritmos7540-rw.tk/
-algo2: http://www.algoritmos7541-rw.tk/
-tda: https://algoritmos-rw.github.io/tda/
-
