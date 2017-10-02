@@ -6,6 +6,5 @@ description: >-
   Facultad de Ingeniería, Universidad de Buenos Aires.
 
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
