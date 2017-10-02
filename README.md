@@ -16,21 +16,11 @@ Portal a todas las páginas de cursos de la catedra:
 
 Cualquier commit en el directorio raíz se auto-publica en la página al hacer push a la rama _master_. GitHub se encarga de ese proceso.
 
-Para visualizar los cambios de manera local, se debe instalar Jekyll. En Windows se instala [así](https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46)
+Para visualizar los cambios de manera local, se debe instalar Jekyll. En Windows se instala [así](https://jwillmer.de/blog/tutorial/how-to-install-jekyll-and-pages-gem-on-windows-10-x46), y para linux dejamos un makefile cómodo:
 
-```
-# Setup inicial
-
-$ gem install jekyll bundler //Instala Jekyll.
-$ gem install bundler //Instala bundler
-$ git clone https://github.com/algoritmos-rw/algoritmos-rw.github.io.git
-$ cd algoritmos-rw.github.io
-$ bundle install //Instala los plugins de Jekyll que le dice el Gemfile
-
-# Para visualizar al editar
-
-$ cd algoritmos-rw.github.io
-$ bundle exec jekyll serve --safe
+``
+$ make build -> instala ruby, jekyll, bundler y los plugins del sitio. Necesita permisos elevados (sudo)
+$ make serve -> ejecuta localmente el sitio para ver los cambios
 ```
 
 ### Como agregar o modificar una materia
