@@ -1,3 +1,17 @@
+#Para agregar una nueva materia se debe añadir a este archivo estás siguiente especificacion con la siguiente forma
+
+#- codigo*: "código de la materia"  (entre comillas)
+#titulo*: título de la materia
+#sitio*: link a la página de la materia
+#descripcion*: Breve descripción de la materia
+#lenguajes: Lenguajes utilizados
+#imagen: logo desado
+#color: color en formato rgb
+
+#Los campos con *, como por ejemplo, título *, son aquellos que son obligatorio de llenar.
+
+#Para modificar cualquier dato, simplemente dirigirse a la información correspondiente a la materia y cambiarla por la deseada.
+
 - codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
   sitio: https://www.algoritmos7540-rw.tk/
