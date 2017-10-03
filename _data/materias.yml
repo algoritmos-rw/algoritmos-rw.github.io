@@ -1,4 +1,4 @@
-- codigo: 75 40
+- codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
   sitio: http://www.algoritmos7540-rw.tk/
   descripcion: Curso en el que se busca introducir a los alumnos a la programación
@@ -6,7 +6,7 @@
   imagen: /assets/img/python.png
   color: rgb(236, 112, 99)
 
-- codigo: 75 41
+- codigo: "75.41 / 95.15"
   titulo: Algoritmos y Programación II
   sitio: http://www.algoritmos7541-rw.tk/
   descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -14,14 +14,14 @@
   imagen: /assets/img/clogo.png
   color: rgb(165, 105, 189)
 
-- codigo: 75 29 / 95 06
+- codigo: "75.29 / 95.06"
   titulo: Teoría de Algoritmos I
   sitio: https://algoritmos-rw.github.io/tda/
   descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
   imagen: /assets/img/clogo.png
   color: rgb(93, 173, 226)
 
-- codigo: 75 30
+- codigo: "75.30"
   titulo: Teoría de Algoritmos II
   sitio: https://algoritmos-rw.github.io/tda2/
   descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
