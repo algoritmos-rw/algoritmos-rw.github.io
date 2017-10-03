@@ -1,12 +1,11 @@
 ---
-layout: default
-title: Cursos Wachenchauzer
+layout: home
 ---
 
 <div class="call-outs-container">
 
 
-{% for materia in site.posts reversed %}
+{% for materia in site.data.materias %}
 
 <pre> </pre>
 
