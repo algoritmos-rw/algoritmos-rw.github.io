@@ -1,6 +1,6 @@
 - codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
-  sitio: http://www.algoritmos7540-rw.tk/
+  sitio: https://www.algoritmos7540-rw.tk/
   descripcion: Curso en el que se busca introducir a los alumnos a la programación
   lenguajes: Python
   imagen: /assets/img/python.png
@@ -8,7 +8,7 @@
 
 - codigo: "75.41 / 95.15"
   titulo: Algoritmos y Programación II
-  sitio: http://www.algoritmos7541-rw.tk/
+  sitio: https://www.algoritmos7541-rw.tk/
   descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
   lenguajes: C, Python
   imagen: /assets/img/clogo.png
