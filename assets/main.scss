@@ -105,3 +105,9 @@ a {
     justify-content: space-between;
   }
 }
+
+@media (max-width: 480px) {
+  .hidden-xxs {
+    border: none !important;
+  }
+}
