@@ -1,6 +1,5 @@
 ---
-layout: default
-title: Cursos Wachenchauzer
+layout: home
 ---
 
 <div class="call-outs-container">
