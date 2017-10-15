@@ -14,11 +14,11 @@
 
 - codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
-  sitio: https://www.algoritmos7540-rw.tk/
-  objetivo: Aprender a diseñar e implementar programas sencillos, introduciendo la noción de recursos en tiempo y espacio.              .
+  sitio: //www.algoritmos7540-rw.tk/
+  objetivo: Aprender a diseñar e implementar programas sencillos, introduciendo la noción de recursos en tiempo y espacio.
   #Objetivo oficial:  Aprender a diseñar e implementar programas sencillos. Introducir la noción de recursos (tiempo y espacio)
   #                   consumidos por los programas. Programación iterativa y recursiva. Uso de objetos. Estructuras de datos
-  #                   simples
+  #                   simples.
   imagen: /assets/img/algo1.png
   color: rgb(128, 139, 150)
 
