@@ -3,8 +3,8 @@
 #- codigo*: "código de la materia"  (entre comillas)
 #titulo*: título de la materia
 #sitio*: link a la página de la materia
-#descripcion*: Breve descripción de la materia
-#lenguajes: Lenguajes utilizados
+#objetivo*: Breve objetivo de la materia
+##objetivos oficiales sacados de http://www.fi.uba.ar/node/36, utilizados como referencia
 #imagen: logo desado
 #color: color en formato rgb
 
@@ -15,29 +15,41 @@
 - codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
   sitio: https://www.algoritmos7540-rw.tk/
-  descripcion: Curso en el que se busca introducir a los alumnos a la programación
-  lenguajes: Python
+  objetivo: Aprender a diseñar e implementar programas sencillos, introduciendo la noción de recursos en tiempo y espacio.              .
+  #Objetivo oficial:  Aprender a diseñar e implementar programas sencillos. Introducir la noción de recursos (tiempo y espacio)
+  #                   consumidos por los programas. Programación iterativa y recursiva. Uso de objetos. Estructuras de datos
+  #                   simples
   imagen: /assets/img/python.png
   color: rgb(236, 112, 99)
 
 - codigo: "75.41 / 95.15"
   titulo: Algoritmos y Programación II
   sitio: https://www.algoritmos7541-rw.tk/
-  descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-  lenguajes: C, Python
+  objetivo: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
+  #Objetivo oficial: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia
+  #                  algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
   imagen: /assets/img/clogo.png
   color: rgb(165, 105, 189)
 
 - codigo: "75.29 / 95.06"
   titulo: Teoría de Algoritmos I
   sitio: https://algoritmos-rw.github.io/tda/
-  descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+  objetivo: Profundizar las herramientas teóricas y prácticas para la evaluación del costo temporal y espacial de un algoritmo analizando diversas técnicas de diseño de algoritmos en la manipulación de grandes volúmenes de información.
+  #Objetivo oficial:Que el alumno
+  #- adquiera las herramientas teóricas y prácticas para la evaluación del costo temporal y espacial de un algoritmo;
+  #- conozca diversas técnicas de diseño de algoritmos y las ventajas y desventajas de cada una en la manipulación de grandes volúmenes de información y/o en el tratamiento de información crítica;
+  #- conozca algoritmos de probada eficiencia y esté capacitado para elegir, de entre ellos, el adecuado para cada problema a resolver;
+  #- pueda combinar diversas técnicas de acuerdo con las condiciones de problema y las de la implementación y decida el grado de compromiso, en función del análisis teórico de eficiencia y de la evaluación de los recursos de que disponga;
+  #- pueda justificar la elección de una implementación particular.
+
+
   imagen: /assets/img/clogo.png
   color: rgb(93, 173, 226)
 
 - codigo: "75.30"
   titulo: Teoría de Algoritmos II
   sitio: https://algoritmos-rw.github.io/tda2/
-  descripcion: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+  objetivo: Estudiar algoritmos avanzados y estructuras de datos avanzadas.
+  #Objetivo oficial: Estudio de algoritmos avanzados y estructuras de datos avanzadas.
   imagen: /assets/img/clogo.png
   color: rgb(69, 179, 157)

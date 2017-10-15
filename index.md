@@ -13,8 +13,7 @@ layout: home
   <h4>{{materia.codigo}}</h4>
   {% if materia.imagen %} <img src="{{materia.imagen}}"> {% endif %}
   <a href="{{materia.sitio}}" title="{{materia.titulo}}"><h4>{{materia.titulo}}</h4></a>
-  <p>{{materia.descripcion}}</p>
-  {% if materia.lenguajes %} <p>Lenguajes utilizados: {{materia.lenguajes}}</p> {% endif %}
+  <p>{{materia.objetivo}}</p>
 </div>
 
 <pre> </pre>
