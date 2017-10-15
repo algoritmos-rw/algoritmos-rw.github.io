@@ -19,7 +19,7 @@
   #Objetivo oficial:  Aprender a diseñar e implementar programas sencillos. Introducir la noción de recursos (tiempo y espacio)
   #                   consumidos por los programas. Programación iterativa y recursiva. Uso de objetos. Estructuras de datos
   #                   simples
-  imagen: /assets/img/python.png
+  imagen: /assets/img/algo1.png
   color: rgb(236, 112, 99)
 
 - codigo: "75.41 / 95.15"
@@ -28,7 +28,7 @@
   objetivo: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
   #Objetivo oficial: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia
   #                  algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
-  imagen: /assets/img/clogo.png
+  imagen: /assets/img/algo2.png
   color: rgb(165, 105, 189)
 
 - codigo: "75.29 / 95.06"
@@ -43,7 +43,7 @@
   #- pueda justificar la elección de una implementación particular.
 
 
-  imagen: /assets/img/clogo.png
+  imagen: /assets/img/tda1.png
   color: rgb(93, 173, 226)
 
 - codigo: "75.30"
@@ -51,5 +51,5 @@
   sitio: https://algoritmos-rw.github.io/tda2/
   objetivo: Estudiar algoritmos avanzados y estructuras de datos avanzadas.
   #Objetivo oficial: Estudio de algoritmos avanzados y estructuras de datos avanzadas.
-  imagen: /assets/img/clogo.png
+  imagen: /assets/img/tda2.png
   color: rgb(69, 179, 157)
