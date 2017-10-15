@@ -20,7 +20,7 @@
   #                   consumidos por los programas. Programación iterativa y recursiva. Uso de objetos. Estructuras de datos
   #                   simples
   imagen: /assets/img/algo1.png
-  color: rgb(236, 112, 99)
+  color: rgb(128, 139, 150)
 
 - codigo: "75.41 / 95.15"
   titulo: Algoritmos y Programación II
@@ -29,7 +29,7 @@
   #Objetivo oficial: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia
   #                  algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
   imagen: /assets/img/algo2.png
-  color: rgb(165, 105, 189)
+  color: rgb(178, 186, 187)
 
 - codigo: "75.29 / 95.06"
   titulo: Teoría de Algoritmos I
@@ -41,10 +41,8 @@
   #- conozca algoritmos de probada eficiencia y esté capacitado para elegir, de entre ellos, el adecuado para cada problema a resolver;
   #- pueda combinar diversas técnicas de acuerdo con las condiciones de problema y las de la implementación y decida el grado de compromiso, en función del análisis teórico de eficiencia y de la evaluación de los recursos de que disponga;
   #- pueda justificar la elección de una implementación particular.
-
-
   imagen: /assets/img/tda1.png
-  color: rgb(93, 173, 226)
+  color: rgb(128, 139, 150)
 
 - codigo: "75.30"
   titulo: Teoría de Algoritmos II
@@ -52,4 +50,4 @@
   objetivo: Estudiar algoritmos avanzados y estructuras de datos avanzadas.
   #Objetivo oficial: Estudio de algoritmos avanzados y estructuras de datos avanzadas.
   imagen: /assets/img/tda2.png
-  color: rgb(69, 179, 157)
+  color: rgb(178, 186, 187)
