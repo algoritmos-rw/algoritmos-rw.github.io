@@ -9,7 +9,7 @@ layout: home
 
 <pre> </pre>
 
-<div class="call-out" style="background-color:{{materia.color}}">
+<div class="call-out">
   <h4>{{materia.codigo}}</h4>
   {% if materia.imagen %} <img src="{{materia.imagen}}"> {% endif %}
   <a href="{{materia.sitio}}" title="{{materia.titulo}}"><h4>{{materia.titulo}}</h4></a>
