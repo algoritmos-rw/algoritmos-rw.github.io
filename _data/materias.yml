@@ -1,18 +1,13 @@
 #Para agregar una nueva materia se debe añadir a este archivo estás siguiente especificacion con la siguiente forma
 
-#- codigo*: "código de la materia"  (entre comillas)
-#titulo*: título de la materia
-#sitio*: link a la página de la materia
-#objetivo*: Breve objetivo de la materia
+#codigo: "código de la materia"  (entre comillas)
+#titulo: título de la materia
+#sitio: link a la página de la materia
+#objetivo: Breve objetivo de la materia
 ##objetivos oficiales sacados de http://www.fi.uba.ar/node/36, utilizados como referencia
 #imagen: logo desado
-#color: color en formato rgb
-
-#Los campos con *, como por ejemplo, título *, son aquellos que son obligatorio de llenar.
 
 #Para modificar cualquier dato, simplemente dirigirse a la información correspondiente a la materia y cambiarla por la deseada.
-
-
 
 - codigo: "75.40 / 95.14"
   titulo: Algoritmos y Programación I
@@ -22,7 +17,6 @@
   #                   consumidos por los programas. Programación iterativa y recursiva. Uso de objetos. Estructuras de datos
   #                   simples.
   imagen: /assets/img/algo1.png
-  color: rgb(255, 255, 240)
 
 - codigo: "75.41 / 95.15"
   titulo: Algoritmos y Programación II
@@ -31,7 +25,6 @@
   #Objetivo oficial: Introducir los conceptos de diseño de algoritmos y de estructuras de datos, utilizando nociones de eficiencia
   #                  algorítmica para poder seleccionar la solución más adecuada para un contexto dado.
   imagen: /assets/img/algo2.png
-  color: rgb(255, 255, 240)
 
 - codigo: "75.29 / 95.06"
   titulo: Teoría de Algoritmos I
@@ -44,7 +37,6 @@
   #- pueda combinar diversas técnicas de acuerdo con las condiciones de problema y las de la implementación y decida el grado de compromiso, en función del análisis teórico de eficiencia y de la evaluación de los recursos de que disponga;
   #- pueda justificar la elección de una implementación particular.
   imagen: /assets/img/tda1.png
-  color: rgb(255, 255, 240)
 
 - codigo: "75.30"
   titulo: Teoría de Algoritmos II
@@ -52,4 +44,3 @@
   objetivo: Estudiar algoritmos avanzados y estructuras de datos avanzadas.
   #Objetivo oficial: Estudio de algoritmos avanzados y estructuras de datos avanzadas.
   imagen: /assets/img/tda2.png
-  color: rgb(255, 255, 240)
