@@ -13,7 +13,7 @@ body{
     src: url(/assets/fonts/simplifica.ttf);
 }
 
-header.cabezera{
+header.cabecera{
     background: url(/assets/img/backgroundBW.png);
     width: 100%;
     padding: 75px 0;
@@ -36,21 +36,33 @@ img {
     margin-right: auto;
 }
 
+.cabecera .cabecera-linea {
+    width: 100%;
+}
+
 h1{
     font-family: stf;
     font-weight: 900;
     color: #fffff0;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    display: inline;
+    display: inline-block;
     padding: 0.2em ;
     border: #fffff0 solid 8px;
+    background: rgba(0, 0, 0, 0.75);
+    font-size: 60px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
 }
 
 .kicker{
     text-align: center;
     font-weight: 500;
     letter-spacing: 0.05em;
+    font-size: 25px;
+    padding: 0.3rem;
+    background: rgba(0, 0, 0, 0.75);
+    display: inline-block;
 }
 
 input {
@@ -63,7 +75,6 @@ body {
   font-family: stf;
   font-size: 1.4rem;
   font-weight: 500;
-  padding-bottom: 100px;
 }
 
 h2, h3 {
@@ -82,7 +93,7 @@ p{
 
 .call-outs-container {
   max-width: 1400px;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 40px auto;
 }
 
 .call-out {
