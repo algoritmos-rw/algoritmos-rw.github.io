@@ -39,6 +39,7 @@ $ bundle exec jekyll serve --livereload --safe
 
 Para la adición o modificación de un curso se debe modificar el archivo [_data/materias.yml](_data/materias.yml) que contiene el siguiente formato para cada materia:
 
+```
 ---
 #codigo: "código de la materia"
 #titulo: título de la materia
@@ -46,3 +47,4 @@ Para la adición o modificación de un curso se debe modificar el archivo [_data
 #objetivo: Breve objetivo de la materia
 #imagen: logo desado
 ---
+```
